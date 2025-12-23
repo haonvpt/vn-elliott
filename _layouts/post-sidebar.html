@@ -166,9 +166,9 @@ layout: default
                 </div>
 
                 <!-- Feature Image (Responsive) -->
-                {% if page.image %}
+                {% if page.feature_image %}
                 <div class="featured-image-wrapper">
-                    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="featured-image" itemprop="image">
+                    <img src="{{ page.feature_image | relative_url }}" alt="{{ page.title }}" class="featured-image" itemprop="image">
                 </div>
                 {% endif %}
             </header>
