@@ -9,9 +9,8 @@ twitter_username: jekyllrb
 github_username:  jekyll
 timezone: "Asia/Ho_Chi_Minh"
 lang: "vn-vi"
-author:
-  name: "Viet Cuong"
-  email: "vietcuong@gmail.com"
+author: "Viet Cuong"
+email: "vietcuong@gmail.com"
 
 
 # Build settings
