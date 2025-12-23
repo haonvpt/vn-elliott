@@ -141,7 +141,7 @@ layout: default
                     <a href="{{ '/' | relative_url }}">Trang chủ</a> 
                     {% if page.categories[0] %}
                     / <a href="{{ '/' | append: (page.categories[0] | slugify: 'latin' ) | relative_url }}">{{ page.categories[0] | capitalize }}</a>
-                    / <p>{{ page.title }}</p>
+                    / <a href="#">{{ page.title }}</a>
                     {% endif %}
                 </nav>
 
