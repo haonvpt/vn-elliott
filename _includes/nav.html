@@ -1,11 +1,8 @@
-<nav class="main-nav" id="main-nav" aria-label="Menu chính">
+<nav class="main-nav" role="navigation" aria-label="Menu chính">
     <ul>
         <li><a href="{{ '/' | relative_url }}">Trang chủ</a></li>
         <li><a href="{{ '/blog' | relative_url }}">Phân tích</a></li>
         <li><a href="{{ '/category/forex' | relative_url }}">Forex</a></li>
-        <li><a href="{{ '/about' | relative_url }}">Về tôi</a></li>
-        
-        <!-- Nút này chỉ hiện trong menu khi ở Mobile (nếu muốn) -->
-        <li class="mobile-only"><a href="#">Đăng nhập</a></li> 
+        <li><a href="{{ '/about' | relative_url }}">Giới thiệu</a></li>
     </ul>
 </nav>

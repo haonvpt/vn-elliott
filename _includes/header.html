@@ -2,21 +2,13 @@
     <div class="container header-inner">
         
         <!-- 1. LOGO -->
-        <a href="{{ '/' | relative_url }}" class="site-title">VN-ELLIOTT</a>
+        <a href="{{ '/' | relative_url }}" class="site-title"><img src="/assets/images/logos/vn-elliott-logo-ngang-154-60.png" alt="VN ELLIOTT logo" height="70px"></a>
         
-        <!-- 2. NAVIGATION -->
-        <nav class="main-nav" role="navigation">
-            <ul>
-                <li><a href="{{ '/' | relative_url }}">Trang chủ</a></li>
-                <li><a href="{{ '/blog' | relative_url }}">Phân tích</a></li>
-                <li><a href="{{ '/category/forex' | relative_url }}">Forex</a></li>
-                <li><a href="{{ '/about' | relative_url }}">Giới thiệu</a></li>
-            </ul>
-        </nav>
+        {% include nav.html %}
 
         <!-- 3. BUTTON RIGHT -->
         <div class="header-right">
-            <a href="https://t.me/yourtelegram" target="_blank" class="btn btn-header-cta">
+            <a href="#" target="_blank" class="btn btn-header-cta">
                 Tham gia nhóm
             </a>
         </div>
