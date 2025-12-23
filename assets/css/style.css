@@ -154,7 +154,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
 /* =========================================
    4. HEADER & NAVIGATION
    ========================================= */
-header {
+.site-header {
     background-color: var(--primary-color);
     height: var(--header-height);
     display: flex;
@@ -165,7 +165,7 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-header .container {
+.site-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -2,215 +2,233 @@
 layout: default
 ---
 
-<!-- CSS Riêng cho Layout bài viết này -->
+<!-- CSS Riêng cho Layout bài viết -->
 <style>
-    /* Breadcrumb */
-    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 10px; }
+    /* 1. Reset style cho Header bài viết (tránh xung đột nếu quên sửa style.css) */
+    article header {
+        position: static;
+        background: transparent;
+        height: auto;
+        color: var(--text-main);
+        box-shadow: none;
+        padding: 0;
+        display: block;
+    }
+
+    /* 2. Breadcrumb */
+    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
     .breadcrumb a { color: #666; }
     .breadcrumb a:hover { color: var(--accent-color); }
     
-    /* Post Header Flexbox */
-    .post-header-meta-row {
+    /* 3. Post Header Elements */
+    .entry-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        line-height: 1.3;
+        color: var(--primary-color);
+    }
+
+    .meta-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 15px;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 10px;
         border-bottom: 1px solid #eee;
-        flex-wrap: wrap; /* Cho phép xuống dòng trên mobile */
-        gap: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
     }
     
-    .meta-left { font-size: 0.9rem; color: #555; }
-    .meta-left i, .meta-left strong { color: var(--primary-color); }
-    
+    .meta-info { font-size: 0.9rem; color: #555; }
+    .meta-info span { margin-right: 10px; }
+    .meta-info i { color: var(--accent-color); }
+
     .social-share a {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        background: #f4f4f4;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
+        background: #f0f0f0;
         color: var(--primary-color);
         margin-left: 5px;
         font-size: 0.8rem;
+        font-weight: bold;
     }
     .social-share a:hover { background: var(--accent-color); color: white; }
 
-    /* Featured Image */
+    /* 4. Feature Image */
+    .featured-image-wrapper { margin-bottom: 30px; }
     .featured-image {
         width: 100%;
         height: auto;
         border-radius: 6px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        object-fit: cover;
     }
 
-    /* Post Footer Section */
-    .post-footer { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
+    /* 5. Main Content Fix */
+    /* Quan trọng: Ngăn nội dung bị tràn làm vỡ khung */
+    .entry-content {
+        font-size: 1.1rem;
+        overflow-wrap: break-word; 
+        word-wrap: break-word;
+    }
+    .entry-content img { max-width: 100%; height: auto; }
+    .entry-content h2 { margin-top: 1.5em; border-left: 4px solid var(--accent-color); padding-left: 15px; }
+    .entry-content h3 { margin-top: 1.2em; color: var(--secondary-color); }
+
+    /* 6. Footer Layout */
+    .entry-footer { margin-top: 50px; }
     
-    .tag-cloud { margin-bottom: 30px; }
-    .tag-cloud a {
+    .keyword-list { margin-bottom: 30px; }
+    .keyword-tag {
         display: inline-block;
-        background: #f1f1f1;
-        padding: 5px 10px;
+        background: #f9f9f9;
+        border: 1px solid #eee;
+        padding: 4px 10px;
         border-radius: 4px;
         font-size: 0.85rem;
-        color: #555;
+        color: #666;
         margin-right: 5px;
         margin-bottom: 5px;
     }
-    .tag-cloud a:hover { background: var(--primary-color); color: white; }
+    .keyword-tag:hover { border-color: var(--accent-color); color: var(--primary-color); }
 
-    .author-box-footer {
+    .author-bio {
         background: var(--bg-light);
         padding: 20px;
-        border-radius: 6px;
+        border-radius: 8px;
         display: flex;
         gap: 20px;
         align-items: center;
         margin-bottom: 40px;
-        border-left: 4px solid var(--accent-color);
     }
+    .author-bio img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-    /* Related Posts Grid */
-    .related-posts-grid {
+    .related-posts h3 { 
+        font-size: 1.3rem; 
+        border-bottom: 2px solid var(--border-color); 
+        padding-bottom: 10px; 
+        margin-bottom: 20px;
+    }
+    
+    .related-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 cột */
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
     
-    /* Mobile Responsive */
     @media (max-width: 768px) {
-        .post-header-meta-row { flex-direction: column; align-items: flex-start; }
-        .related-posts-grid { grid-template-columns: 1fr; } /* 1 cột trên mobile */
+        .meta-row { flex-direction: column; align-items: flex-start; }
+        .related-grid { grid-template-columns: 1fr; }
+        .author-bio { flex-direction: column; text-align: center; }
     }
 </style>
 
 <div class="container layout-grid layout-sidebar-right section">
     
-    <!-- MAIN CONTENT -->
-    <main id="main-content">
+    <!-- MAIN CONTENT COLUMN -->
+    <!-- min-width: 0 giúp Grid item co lại nếu nội dung bên trong quá to (như ảnh, code block) -->
+    <main id="main-content" style="min-width: 0;">
         <article itemscope itemtype="http://schema.org/BlogPosting">
             
-            <!-- A. HEADER BÀI VIẾT -->
-            <header>
-                <!-- 1. Breadcrumb -->
-                <nav class="breadcrumb" aria-label="Breadcrumb">
+            <!-- --- PHẦN HEADER BÀI VIẾT --- -->
+            <header class="entry-header">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
                     <a href="{{ '/' | relative_url }}">Trang chủ</a> 
-                    {% if page.categories %}
-                        / <a href="{{ '/category/' | append: page.categories[0] | downcase | relative_url }}">{{ page.categories[0] | capitalize }}</a>
+                    {% if page.categories[0] %}
+                    / <a href="{{ '/category/' | append: page.categories[0] | downcase | relative_url }}">{{ page.categories[0] | capitalize }}</a>
                     {% endif %}
-                    / <span>{{ page.title | truncate: 50 }}</span>
                 </nav>
 
-                <!-- 2. Title -->
-                <h1 class="post-title" itemprop="name headline" style="margin-bottom: 10px;">{{ page.title }}</h1>
+                <!-- Title -->
+                <h1 class="entry-title" itemprop="headline">{{ page.title }}</h1>
 
-                <!-- 3. Meta & Social (Flex Row) -->
-                <div class="post-header-meta-row">
-                    <!-- Trái: Author, Cat, Date -->
-                    <div class="meta-left">
-                        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                            <strong>{{ page.author | default: site.author }}</strong>
-                        </span>
-                        <span> &bull; </span>
-                        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                <!-- Meta Info + Share -->
+                <div class="meta-row">
+                    <div class="meta-info">
+                        <span itemprop="author">Bởi <strong>{{ page.author | default: site.author }}</strong></span>
+                        <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">
                             {{ page.date | date: "%d/%m/%Y" }}
                         </time>
-                        <span> &bull; </span>
-                        <span style="color: var(--accent-color); font-weight: bold;">
-                            {{ page.categories | first }}
-                        </span>
+                        <span style="color: var(--accent-color); font-weight: bold;">{{ page.categories | first }}</span>
                     </div>
-
-                    <!-- Phải: Social Share (Dùng link chia sẻ nhanh) -->
+                    
                     <div class="social-share">
-                        <span>Chia sẻ: </span>
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share on Facebook">FB</a>
-                        <!-- Twitter/X -->
-                        <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share on Twitter">X</a>
-                        <!-- Telegram -->
-                        <a href="https://t.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" rel="noopener" aria-label="Share on Telegram">TG</a>
+                        <!-- Link Share đơn giản -->
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" aria-label="Share FB">FB</a>
+                        <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.url | absolute_url }}" target="_blank" aria-label="Share X">X</a>
+                        <a href="https://t.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" aria-label="Share Tele">TG</a>
                     </div>
                 </div>
 
-                <!-- 4. Feature Image -->
+                <!-- Feature Image (Responsive) -->
                 {% if page.image %}
-                <figure>
+                <div class="featured-image-wrapper">
                     <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="featured-image" itemprop="image">
-                </figure>
+                </div>
                 {% endif %}
             </header>
 
-            <!-- B. MAIN CONTENT -->
-            <div class="post-content" itemprop="articleBody">
+            <!-- --- PHẦN MAIN CONTENT --- -->
+            <div class="entry-content" itemprop="articleBody">
                 {{ content }}
             </div>
 
-            <!-- C. FOOTER BÀI VIẾT -->
-            <footer class="post-footer">
+            <!-- --- PHẦN FOOTER BÀI VIẾT --- -->
+            <footer class="entry-footer">
                 
-                <!-- 1. Keywords (Tags) -->
+                <!-- 1. Keywords / Tags -->
                 {% if page.tags.size > 0 %}
-                <div class="tag-cloud">
+                <div class="keyword-list">
                     <strong>Từ khóa: </strong>
                     {% for tag in page.tags %}
-                    <a href="{{ '/tag/' | append: tag | relative_url }}" rel="tag">#{{ tag }}</a>
+                    <a href="#" class="keyword-tag">#{{ tag }}</a>
                     {% endfor %}
                 </div>
                 {% endif %}
 
                 <!-- 2. Author Box -->
-                <div class="author-box-footer">
-                    <img src="{{ site.author_avatar | relative_url }}" alt="{{ site.author }}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                <div class="author-bio">
+                    <img src="{{ site.author_avatar | relative_url }}" alt="{{ site.author }}">
                     <div>
-                        <h4 style="margin-bottom: 5px;">{{ page.author | default: site.author }}</h4>
-                        <p style="margin-bottom: 0; font-size: 0.9rem;">
-                            Chuyên gia phân tích kỹ thuật và Sóng Elliott. Theo dõi tôi để cập nhật những xu hướng thị trường mới nhất.
+                        <h4 style="margin-bottom: 5px; color: var(--primary-color);">{{ page.author | default: site.author }}</h4>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">
+                            Trader & Chuyên gia phân tích kỹ thuật. Theo dõi tôi để nhận các kịch bản giao dịch Sóng Elliott mới nhất.
                         </p>
                     </div>
                 </div>
 
-                <!-- 3. Related Posts (Bài viết liên quan cùng category) -->
+                <!-- 3. Related Posts -->
                 <div class="related-posts">
-                    <h3 style="border-bottom: 2px solid var(--primary-color); display: inline-block; margin-bottom: 20px;">Bài viết liên quan</h3>
-                    
-                    <div class="related-posts-grid">
-                        {% assign maxRelated = 6 %}
-                        {% assign minCommonTags = 1 %}
-                        {% assign maxRelatedCounter = 0 %}
-                        
+                    <h3>Bài viết cùng chủ đề</h3>
+                    <div class="related-grid">
+                        {% assign maxRelated = 4 %}
+                        {% assign count = 0 %}
                         {% for post in site.posts %}
-                            {% if post.url != page.url %}
-                                {% if post.categories contains page.categories[0] %}
-                                    <div class="post-card">
-                                        <div class="post-card-body" style="padding: 15px;">
-                                            <div class="post-meta">{{ post.date | date: "%d/%m/%Y" }}</div>
-                                            <h4 style="font-size: 1.1rem; margin-bottom: 10px;">
-                                                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                                            </h4>
-                                            <a href="{{ post.url | relative_url }}" style="font-size: 0.9rem; font-weight: bold;">Xem tiếp &rarr;</a>
-                                        </div>
+                            {% if post.url != page.url and post.categories contains page.categories[0] %}
+                                <div class="post-card">
+                                    <div class="post-card-body" style="padding: 15px;">
+                                        <div class="post-meta">{{ post.date | date: "%d/%m/%Y" }}</div>
+                                        <h4 style="font-size: 1rem; margin-bottom: 5px;">
+                                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                                        </h4>
                                     </div>
-                                    {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
-                                    {% if maxRelatedCounter >= maxRelated %}
-                                        {% break %}
-                                    {% endif %}
-                                {% endif %}
+                                </div>
+                                {% assign count = count | plus: 1 %}
+                                {% if count >= maxRelated %}{% break %}{% endif %}
                             {% endif %}
                         {% endfor %}
                     </div>
                 </div>
-
             </footer>
 
         </article>
     </main>
 
-    <!-- SIDEBAR -->
+    <!-- INCLUDE SIDEBAR -->
     {% include sidebar.html %}
 </div>
