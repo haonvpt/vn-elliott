@@ -42,7 +42,7 @@ body {
    2. TYPOGRAPHY & COMMON ELEMENTS (THÀNH PHẦN CƠ BẢN)
    ========================================= */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-main);
     color: var(--primary-color);
     margin-bottom: 1rem;
     line-height: 1.3;
