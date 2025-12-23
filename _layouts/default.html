@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <!-- Skip to content (ARIA Standards) -->
+    <a href="#main-content" style="position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;">Chuyển đến nội dung chính</a>
+
+    <!-- Header -->
+    <header role="banner">
+        <div class="container">
+            <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+            
+            <nav class="main-nav" role="navigation" aria-label="Menu chính">
+                <div class="menu-toggle" aria-label="Mở menu">☰</div>
+                <ul>
+                    {% for item in site.nav_items %} <!-- Bạn cần khai báo nav_items trong _config.yml -->
+                    <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
+                    {% endfor %}
+                    <!-- Hoặc hardcode menu nếu chưa config -->
+                    <li><a href="{{ '/' | relative_url }}">Trang chủ</a></li>
+                    <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Injection -->
+    {{ content }}
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Về Vn-Elliott</h4>
+                    <p>{{ site.description }}</p>
+                </div>
+                <div>
+                    <h4>Liên kết</h4>
+                    <nav aria-label="Footer Menu">
+                        <a href="/about">Giới thiệu</a><br>
+                        <a href="/contact">Liên hệ</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; {{ site.time | date: '%Y' }} {{ site.title }}. Xây dựng với Jekyll & GitHub Pages.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

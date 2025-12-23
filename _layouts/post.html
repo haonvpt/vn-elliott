@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<main id="main-content" class="container section">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+        
+        <!-- Header bài viết -->
+        <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+            <p class="post-meta">
+                Đăng bởi <span itemprop="author">{{ page.author | default: site.author }}</span> 
+                vào <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%d/%m/%Y" }}</time>
+                trong <span>{{ page.categories | join: ', ' }}</span>
+            </p>
+        </header>
+
+        <!-- Nội dung bài viết -->
+        <div class="post-content" itemprop="articleBody">
+            {{ content }}
+        </div>
+
+        <!-- Tag và Share -->
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+            <strong>Tags:</strong> 
+            {% for tag in page.tags %}
+            <span style="background: #eee; padding: 2px 8px; font-size: 0.9em; border-radius: 4px;">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+
+    </article>
+</main>
