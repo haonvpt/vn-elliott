@@ -1,8 +1,8 @@
 /* =========================================
-   1. VARIABLES & RESET (CẤU HÌNH DÙNG CHUNG)
+   1. VARIABLES & RESET
    ========================================= */
 :root {
-    /* --- Bảng màu (Color Palette) --- */
+    /* --- (Color Palette) --- */
     --primary-color: #0A1F3B;   /* Xanh Navy - Chủ đạo */
     --secondary-color: #162E52; /* Xanh Navy nhạt hơn (cho hover/nền phụ) */
     --accent-color: #C8B595;    /* Vàng Đồng - Điểm nhấn */
@@ -15,19 +15,14 @@
     --bg-body: #FFFFFF;
     --bg-light: #F9F9F9;        /* Nền xám rất nhạt */
     --border-color: #E5E5E5;    /* Màu đường viền */
-
-    /* --- Typography --- */
     --font-main: 'Segoe UI', Helvetica, Arial, sans-serif;
-    --font-heading: 'Georgia', serif; /* Font có chân cho tiêu đề (Sang trọng hơn cho tài chính) */
-
-    /* --- Kích thước --- */
+    --font-heading: 'Georgia', serif; /* Font có chân */
     --container-width: 1536px;
     --header-height: 70px;
     --spacing-unit: 20px;
     --border-radius: 6px;
 }
 
-/* Reset cơ bản */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -39,7 +34,7 @@ body {
 }
 
 /* =========================================
-   2. TYPOGRAPHY & COMMON ELEMENTS (THÀNH PHẦN CƠ BẢN)
+   2. TYPOGRAPHY & COMMON ELEMENTS
    ========================================= */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-main);
@@ -60,7 +55,7 @@ a:hover { color: var(--accent-color); }
 
 img { max-width: 100%; height: auto; display: block; border-radius: var(--border-radius); }
 
-/* --- Buttons (Nút bấm) --- */
+/* --- Buttons --- */
 .btn {
     display: inline-block;
     padding: 10px 25px;
@@ -90,13 +85,13 @@ img { max-width: 100%; height: auto; display: block; border-radius: var(--border
 }
 .btn-outline:hover { background-color: var(--primary-color); color: var(--text-white); }
 
-/* --- Tables (Bảng biểu - Quan trọng cho tài chính) --- */
+/* --- Tables --- */
 table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
 th, td { padding: 12px; border: 1px solid var(--border-color); text-align: left; }
 th { background-color: var(--primary-color); color: var(--text-white); }
 tr:nth-child(even) { background-color: var(--bg-light); }
 
-/* --- Blockquote (Trích dẫn) --- */
+/* --- Blockquote --- */
 blockquote {
     border-left: 5px solid var(--accent-color);
     padding-left: 15px;
@@ -107,7 +102,7 @@ blockquote {
     padding: 15px;
 }
 
-/* --- Forms (Form nhập liệu) --- */
+/* --- Forms --- */
 input[type="text"], input[type="email"], textarea {
     width: 100%;
     padding: 10px;
@@ -123,7 +118,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
 .alert-warning { background-color: #fff3cd; color: #856404; border-color: #ffc107; }
 
 /* =========================================
-   3. LAYOUT SYSTEM (HỆ THỐNG BỐ CỤC)
+   3. LAYOUT SYSTEM 
    ========================================= */
 .container {
     max-width: var(--container-width);
