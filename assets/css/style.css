@@ -122,7 +122,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
    ========================================= */
 .container {
     max-width: var(--container-width);
-    margin: 70px auto;
+    margin: 0px auto;
     padding: 0 20px;
 }
 
@@ -355,12 +355,3 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
 .site-footer a:hover { color: var(--accent-color); }
 .copyright { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.9rem; }
 
-/* =========================================
-   9. RESPONSIVE (MOBILE)
-   ========================================= */
-@media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    .main-nav { display: none; } /* Cần thêm JS để toggle menu */
-    h1 { font-size: 2rem; }
-    .hero-section { padding: 50px 0; }
-}
