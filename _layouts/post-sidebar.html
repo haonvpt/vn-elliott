@@ -140,7 +140,8 @@ layout: default
                 <nav class="breadcrumb">
                     <a href="{{ '/' | relative_url }}">Trang chủ</a> 
                     {% if page.categories[0] %}
-                    / <a href="{{ '/category/' | append: page.categories[0] | downcase | relative_url }}">{{ page.categories[0] | capitalize }}</a>
+                    / <a href="{{ '/' | append: (page.categories[0] | slugify: 'latin' ) | relative_url }}">{{ page.categories[0] | capitalize }}</a>
+                    / <p>{{ page.title }}</p>
                     {% endif %}
                 </nav>
 
@@ -155,6 +156,17 @@ layout: default
                             {{ page.date | date: "%d/%m/%Y" }}
                         </time>
                         <span style="color: var(--accent-color); font-weight: bold;">{{ page.categories | first }}</span>
+                        <span class="reading-time">
+                            <span class="separator">&bull;</span>
+                            <span class="icon">⏱</span>
+                            {% assign words = content | number_of_words %}
+                            {% assign read_time = words | divided_by: 400 %}
+                            {% if read_time < 1 %}
+                                1 phút đọc
+                            {% else %}
+                                {{ read_time }} phút đọc
+                            {% endif %}
+                        </span>
                     </div>
                     
                     <div class="social-share">
