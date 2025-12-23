@@ -182,12 +182,19 @@ layout: default
             <footer class="entry-footer">
                 
                 <!-- 1. Keywords / Tags -->
-                {% if page.tags.size > 0 %}
+                {% if page.keywords.size > 0 %}
                 <div class="keyword-list">
                     <strong>Từ khóa: </strong>
-                    {% for tag in page.tags %}
-                    <a href="#" class="keyword-tag">#{{ tag }}</a>
-                    {% endfor %}
+                    {% if page.keywords contains ',' %}
+                        {% assign keywords_list = page.keywords | split: ',' %}
+                        {% for kw in keywords_list %}
+                            <a href="#" rel="tag" class="keyword-tag">{{ kw | strip }}</a>
+                        {% endfor %}
+                    {% else %}
+                        {% for kw in page.keywords %}
+                            <a href="#" rel="tag" class="keyword-tag">{{ kw }}</a>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 {% endif %}
 

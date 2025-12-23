@@ -7,7 +7,7 @@ author_slug: nhaodev
 category: "Business Names"
 category_slug: business-names
 published: true
-tags: "Key1, Key 2"
+keywords: "Key1, Key 2"
 date:   2025-10-23 10:55:47 +0700
 create_date: 2025-10-23 10:55:47 +0700
 updated_date: 2025-10-23 10:55:47 +0700
