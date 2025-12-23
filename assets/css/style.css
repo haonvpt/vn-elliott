@@ -135,7 +135,6 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
 .layout-grid {
     display: grid;
     gap: 40px;
-    margin: 40px 0;
 }
 
 /* Mặc định Mobile: 1 cột */
