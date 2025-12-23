@@ -10,11 +10,7 @@ description: Hướng dẫn giao dịch Forex, Chứng khoán chuyên sâu với
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.description }}">
-    
-    <!-- Link đến file CSS đã tạo -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    
-    <!-- Google Fonts (Optional) -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
