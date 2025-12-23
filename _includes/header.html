@@ -1,38 +1,25 @@
 <header class="site-header" role="banner">
     <div class="container header-inner">
         
-        <!-- 1. LOGO (Bên trái) -->
+        <!-- 1. LOGO -->
         <a href="{{ '/' | relative_url }}" class="site-title">VN-ELLIOTT</a>
         
-        {% include nav.html %}
+        <!-- 2. NAVIGATION -->
+        <nav class="main-nav" role="navigation">
+            <ul>
+                <li><a href="{{ '/' | relative_url }}">Trang chủ</a></li>
+                <li><a href="{{ '/blog' | relative_url }}">Phân tích</a></li>
+                <li><a href="{{ '/category/forex' | relative_url }}">Forex</a></li>
+                <li><a href="{{ '/about' | relative_url }}">Giới thiệu</a></li>
+            </ul>
+        </nav>
 
-        <!-- 3. RIGHT ACTIONS (Button + Menu Toggle) -->
+        <!-- 3. BUTTON RIGHT -->
         <div class="header-right">
-            <!-- Button CTA (Luôn hiện hoặc ẩn trên mobile tùy bạn, ở đây tôi để hiện) -->
             <a href="https://t.me/yourtelegram" target="_blank" class="btn btn-header-cta">
                 Tham gia nhóm
             </a>
-
-            <!-- Menu Toggle (Hamburger Icon - Chỉ hiện Mobile) -->
-            <div class="menu-toggle" id="menu-toggle" aria-label="Mở menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
 
     </div>
 </header>
-
-<!-- JAVASCRIPT CHO MOBILE MENU -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.getElementById('menu-toggle');
-        const mainNav = document.getElementById('main-nav');
-
-        menuToggle.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-            menuToggle.classList.toggle('open');
-        });
-    });
-</script>
