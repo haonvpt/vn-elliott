@@ -1,0 +1,75 @@
+---
+layout: default
+title: Trang chủ
+---
+
+<!-- 1. HERO SECTION (Banner chính) -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Chinh Phục Thị Trường Với Nguyên Lý Sóng Elliott</h1>
+        <p class="lead">Phương pháp phân tích kỹ thuật chuyên sâu giúp bạn xác định xu hướng và tìm kiếm cơ hội giao dịch Forex, Chứng khoán hiệu quả.</p>
+        
+        <!-- Các nút bấm -->
+        <div style="margin-top: 30px;">
+            <a href="#intro" class="btn btn-primary">Tìm hiểu ngay</a>
+            <a href="/blog" class="btn btn-outline" style="color: white; border-color: white; margin-left: 10px;">Đọc Blog</a>
+        </div>
+    </div>
+</section>
+
+<!-- 2. FEATURES SECTION (Lợi ích) -->
+<section id="intro" class="features-section container">
+    <div class="section-title">
+        <h2>Tại Sao Chọn Vn-Elliott?</h2>
+    </div>
+    
+    <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="post-card" style="text-align: center; padding: 30px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">🔍 Phân Tích Chuyên Sâu</h3>
+            <p>Nhận định thị trường dựa trên cấu trúc sóng chi tiết, kịch bản rõ ràng, không dự đoán cảm tính.</p>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="post-card" style="text-align: center; padding: 30px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">📚 Kiến Thức Thực Chiến</h3>
+            <p>Chia sẻ kinh nghiệm quản lý vốn, tâm lý giao dịch và cách vào lệnh theo tỉ lệ R:R cao.</p>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="post-card" style="text-align: center; padding: 30px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">📈 Đa Dạng Thị Trường</h3>
+            <p>Áp dụng tốt cho Forex (Vàng, EU, GU), Chứng khoán Việt Nam (VNI), và Crypto.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 3. LATEST POSTS (Bài viết mới nhất) -->
+<section class="latest-posts-section" style="background-color: var(--bg-light);">
+    <div class="container">
+        <div class="section-title">
+            <h2>Bài Viết Mới Nhất</h2>
+        </div>
+        
+        <div class="card-grid">
+            {% for post in site.posts limit:3 %}
+            <article class="post-card">
+                <div class="post-card-body">
+                    <div class="post-meta">
+                        {{ post.date | date: "%d/%m/%Y" }} | {{ post.categories | first }}
+                    </div>
+                    <h3 class="post-card-title">
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    </h3>
+                    <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                    <a href="{{ post.url | relative_url }}" style="color: var(--accent-color); font-weight: bold;">Xem chi tiết &rarr;</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="{{ '/blog' | relative_url }}" class="btn btn-secondary">Xem tất cả bài viết</a>
+        </div>
+    </div>
+</section>
