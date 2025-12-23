@@ -127,7 +127,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
    ========================================= */
 .container {
     max-width: var(--container-width);
-    margin: 0 auto;
+    margin: 70px auto;
     padding: 0 20px;
 }
 
