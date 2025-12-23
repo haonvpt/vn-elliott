@@ -165,6 +165,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /* 1. LOGO */
@@ -214,50 +215,55 @@ input:focus, textarea:focus { outline: none; border-color: var(--primary-color);
    ========================================= */
 @media (max-width: 992px) {
     
-    .header-inner {
-        flex-wrap: wrap; /* Cho phép rớt dòng */
-        gap: 10px; /* Khoảng cách giữa các phần tử */
+    /* Đảm bảo header có thể cao bao nhiêu tùy thích */
+    .site-header {
+        height: auto !important; 
+        overflow: visible !important; /* Không được cắt nội dung tràn */
     }
 
-    /* --- SẮP XẾP LẠI THỨ TỰ (RE-ORDER) --- */
-    
-    /* Logo: Ở vị trí 1, căn trái */
+    .header-inner {
+        gap: 15px; /* Khoảng cách giữa hàng 1 và hàng 2 */
+    }
+
+    /* --- LOGO (Trái - Hàng 1) --- */
     .site-title {
         order: 1;
-        flex: 1; /* Chiếm khoảng trống còn lại bên trái */
+        flex: 1; /* Đẩy button sang phải */
     }
 
-    /* Button: Ở vị trí 2, căn phải */
+    /* --- BUTTON (Phải - Hàng 1) --- */
     .header-right {
         order: 2;
     }
 
-    /* Menu: Rớt xuống vị trí 3, chiếm full hàng */
+    /* --- MENU (Hàng 2 - Nằm dưới cùng) --- */
     .main-nav {
         order: 3;
-        width: 100%; /* Chiếm trọn hàng thứ 2 */
+        width: 100%; /* Chiếm trọn bề ngang */
+        
+        /* Đảm bảo nó hiện ra */
+        display: block !important; 
+        opacity: 1 !important;
+        visibility: visible !important;
+        
+        /* Trang trí lại cho đẹp */
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 15px;
         margin-top: 5px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255,255,255,0.1); /* Đường kẻ ngăn cách */
-        overflow-x: auto; /* Nếu menu dài quá thì cho trượt ngang */
     }
 
-    /* Tinh chỉnh Menu trên Mobile */
+    /* Căn giữa các mục menu */
     .main-nav ul {
-        justify-content: center; /* Căn giữa các mục menu */
-        flex-wrap: wrap; /* Nếu nhiều mục quá thì xuống dòng tiếp */
-        gap: 15px 20px; /* Khoảng cách: Hàng dọc 15px, Hàng ngang 20px */
+        display: flex;
+        justify-content: center; /* Căn giữa */
+        flex-wrap: wrap; /* Nếu nhiều menu quá thì xuống dòng tiếp */
+        gap: 15px;
     }
-    
+
     .main-nav a {
-        font-size: 0.9rem; /* Chữ nhỏ lại chút cho gọn */
-        color: #ddd;
-    }
-    
-    /* Chỉnh lại nút cho vừa mắt mobile */
-    .btn-header-cta {
-        padding: 6px 12px;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        color: #e0e0e0; /* Màu chữ sáng hơn chút để dễ đọc */
+        white-space: nowrap;
     }
 }
 
