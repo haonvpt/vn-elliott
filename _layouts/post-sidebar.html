@@ -127,7 +127,7 @@ layout: default
     }
 </style>
 
-<div class="container layout-grid layout-sidebar-right section" margin-top="70px;">
+<div class="container layout-grid layout-sidebar-right section" margin-top="70px">
     
     <!-- MAIN CONTENT COLUMN -->
     <!-- min-width: 0 giúp Grid item co lại nếu nội dung bên trong quá to (như ảnh, code block) -->
@@ -146,13 +146,13 @@ layout: default
                 </nav>
 
                 <!-- Title -->
-                <h1 class="entry-title" itemprop="headline">{{ page.title }}</h1>
+                <h1 class="entry-title" itemprop="headline" aria-label="Tiêu đề bài viết">{{ page.title }}</h1>
 
                 <!-- Meta Info + Share -->
                 <div class="meta-row">
                     <div class="meta-info">
-                        <span itemprop="author">Bởi <strong>{{ page.author | default: site.author }}</strong></span>
-                        <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">
+                        <span itemprop="author" aria-label="Tác giả">Bởi <strong>{{ page.author | default: site.author }}</strong></span>
+                        <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}" aria-label="Ngày đăng">
                             {{ page.date | date: "%d/%m/%Y" }}
                         </time>
                         <span style="color: var(--accent-color); font-weight: bold;">{{ page.categories | first }}</span>
@@ -186,7 +186,7 @@ layout: default
             </header>
 
             <!-- --- PHẦN MAIN CONTENT --- -->
-            <div class="entry-content" itemprop="articleBody">
+            <div class="entry-content" itemprop="articleBody" aria-label="Nội dung chính của bài viết">
                 {{ content }}
             </div>
 
@@ -211,7 +211,7 @@ layout: default
                 {% endif %}
 
                 <!-- 2. Author Box -->
-                <div class="author-bio">
+                <div class="author-bio" aria-label="Giới thiệu tác giả">
                     <img src="{{ site.author_avatar | relative_url }}" alt="{{ site.author }}">
                     <div>
                         <h4 style="margin-bottom: 5px; color: var(--primary-color);">{{ page.author | default: site.author }}</h4>
@@ -222,7 +222,7 @@ layout: default
                 </div>
 
                 <!-- 3. Related Posts -->
-                <div class="related-posts">
+                <div class="related-posts" aria-label="Các bài viết cùng chủ đề">
                     <h3>Bài viết cùng chủ đề</h3>
                     <div class="related-grid">
                         {% assign maxRelated = 4 %}
