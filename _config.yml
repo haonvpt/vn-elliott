@@ -11,7 +11,7 @@ timezone: "Asia/Ho_Chi_Minh"
 lang: "vn-vi"
 author: "Viet Cuong"
 email: "vietcuong@gmail.com"
-
+author_avatar: "/assets/images/logos/vn-elliott-logo-192-192.png"
 
 # Build settings
 theme: minima

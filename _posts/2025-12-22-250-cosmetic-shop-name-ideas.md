@@ -2,8 +2,8 @@
 layout: post-sidebar
 title: "250+ Creative Cosmetic Shop Name Ideas for Your New Brand"
 description: 
-author: "NhaoDev"
-author_slug: nhaodev
+author: "Viet Cuong"
+author_slug: vietcuong
 category: "Business Names"
 category_slug: business-names
 published: true
