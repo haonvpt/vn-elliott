@@ -128,19 +128,39 @@ layout: default
 </style>
 
 <div class="container layout-grid layout-sidebar-right section" margin-top="70px">
-    
+        <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="{{ '/' | absolute_url }}">
+                <span itemprop="name">Trang chủ</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </span>
+
+        {% if page.categories[0] %}
+            <span class="separator">/</span>
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="{{ '/' | append: (page.categories[0] | slugify: 'latin') | relative_url }}">
+                    <span itemprop="name">{{ page.categories[0] | capitalize }}</span>
+                </a>
+                <meta itemprop="position" content="2" />
+            </span>
+            <span class="separator">/</span>
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="{{ page.url | absolute_url }}" aria-current="page" style="pointer-events: none; color: inherit; text-decoration: none;">
+                    <span itemprop="name">{{ page.title }}</span>
+                </a>
+                <meta itemprop="position" content="3" />
+            </span>
+        {% endif %}
+        
+    </nav>
     <!-- MAIN CONTENT COLUMN -->
     <main id="main-content" style="min-width: 0;">
         <article itemscope itemtype="http://schema.org/BlogPosting">
             <header class="entry-header">
-                <!-- Breadcrumb -->
-                <nav class="breadcrumb">
-                    <a href="{{ '/' | relative_url }}">Trang chủ</a> 
-                    {% if page.categories[0] %}
-                    / <a href="{{ '/' | append: (page.categories[0] | slugify: 'latin' ) | relative_url }}">{{ page.categories[0] | capitalize }}</a>
-                    / <a href="#">{{ page.title }}</a>
-                    {% endif %}
-                </nav>
+
+
                 <h1 class="entry-title" itemprop="headline" aria-label="Tiêu đề bài viết">{{ page.title }}</h1>
                 <!-- Meta Info + Share -->
                 <div class="meta-row">
